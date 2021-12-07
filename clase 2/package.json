@@ -1,0 +1,9 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "",
+  "type":"module",
+  "main": "contenedor.js",
+  "author": "",
+  "license": "ISC"
+}
