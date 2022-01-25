@@ -5,6 +5,7 @@ const express = require('express')
 const { Router } = require('express')
 const fs = require('fs')
 const multer = require('multer')
+const upload = multer({ dest: 'uploads/' })
 
 // init the express app, router, add a body parser, select a port and define same log messages
 
@@ -23,7 +24,8 @@ server.on('error', err => console.log(`Error en servidor: ${err}`))
 
 // GET root path
 router.get('/', (req, res) => {
-    res.send({ mensaje: 'Hola mundo' })
+    res.sendFile(__dirname + '/public/html/index.html')
+    console.log('index.html fue cargada exitosamente.')
 })
 
 // GET an array of object including all the products in the productos.json file
@@ -40,7 +42,7 @@ router.get('/api/productos', (req, res) => {
 })
 
 // POST a new product to the productos.json file with a hashed id
-router.post('/api/productos', (req, res) => {
+router.post('/api/productos', upload.none(), (req, res) => {
     const producto = req.body
     const productos = require('./productos.json')
     const totalProductos = require('./totalProductosCreados.json')
@@ -50,7 +52,7 @@ router.post('/api/productos', (req, res) => {
     fs.writeFileSync('./productos.json', JSON.stringify(productos))
     totalProductos.total += 1
     fs.writeFileSync('./totalProductosCreados.json', JSON.stringify(totalProductos))
-    res.send(producto)
+    res.send(productos)
 })
 
 // GET a single product object from productos.json file by [hashed] id and display and error if none is found
@@ -91,8 +93,9 @@ router.put('/api/productos/:id', (req, res) => {
     res.send(producto)
 })
 
+// GET an html file to submit a new product thru a form in UI
 router.get('/api/nuevo_producto', (req, res) => {
-    res.sendFile(__dirname + '/public/html/nuevosubmit.html')
+    res.sendFile(__dirname + '/public/html/submit.html')
     console.log('submit.html fue cargada exitosamente.')
 })
 
