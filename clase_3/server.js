@@ -46,7 +46,7 @@ router.get('/productos', (req, res) => {
         res.status(404).send({ mensaje: 'No existen productos en la base de datos.' })
         console.log('No existen productos en la base de datos.')
     } else {
-        res.send(productos)
+        res.render('products', { productos : productos.slice(1) })
         console.log('Se han enviado los productos.')
     }
     
@@ -60,22 +60,24 @@ router.post('/productos', upload.none(), (req, res) => {
     producto.id = productos[0].totalProductos
     productos.push(producto)
     fs.writeFileSync('./productos.json', JSON.stringify(productos))
-    res.send(productos)
+    res.redirect(`/productos/${producto.id}`)
 })
 
 // GET a single product object from productos.json file id and display or error if none is found
+
 router.get('/productos/:id', (req, res) => {
     const productos = require('./productos.json')
     const id = Number(req.params.id)
     const producto = productos.find(producto => producto.id === id)
     if (producto) {
-        res.send(producto)
+        res.render('product', { producto : producto })
         console.log(`Producto encontrado: ${producto.title}`)
     } else {
         res.status(404).send({ mensaje: 'Producto no encontrado' })
         console.log(`Producto no encontrado: ${id}`)
     }
 })
+
 
 // DELETE a product from productos.json file by id
 router.delete('/productos/:id', (req, res) => {
@@ -103,7 +105,7 @@ router.put('/productos/:id', (req, res) => {
 
 // GET an html file to submit a new product thru a form in UI
 router.get('/nuevo_producto', (req, res) => {
-    res.sendFile(__dirname + '/views/layout/submit.hbs')
+    res.render('submit_product')
     console.log('submit.html fue cargada exitosamente.')
 })
 
