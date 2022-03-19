@@ -1,13 +1,13 @@
-// dependencies: body-parser, express, Router fs
+// dependencies: body-parser, express, handlebars, Router fs
 const bodyParser = require('body-parser')
 const express = require('express')
+const { engine }  = require('express-handlebars')
 const { Router } = require('express')
 const fs = require('fs')
 const multer = require('multer')
 const upload = multer({ dest: 'uploads/' })
 
 // init the express app, router, add a body parser, select a port and define same log messages
-
 const app = express()
 const router = new Router()
 app.use('/', router)
@@ -21,9 +21,21 @@ const server = app.listen(PORT, () => {
 })
 server.on('error', err => console.log(`Error en servidor: ${err}`))
 
+// set up the handlebars engine
+app.engine('hbs',
+     engine({
+        extname: '.hbs',
+        defaultLayout: 'index.hbs',
+        layoutsDir: __dirname + '/views/layouts/',
+        partialsDir: __dirname + '/views/partials/'
+    })  
+)
+app.set('view engine', 'hbs')
+app.set('views', __dirname + '/views')
+
 // GET root path
 router.get('/', (req, res) => {
-    res.sendFile(__dirname + '/public/views/index.html')
+    res.render('home')
     console.log('index.html fue cargada exitosamente.')
 })
 
@@ -91,7 +103,7 @@ router.put('/productos/:id', (req, res) => {
 
 // GET an html file to submit a new product thru a form in UI
 router.get('/nuevo_producto', (req, res) => {
-    res.sendFile(__dirname + '/public/views/submit.html')
+    res.sendFile(__dirname + '/views/layout/submit.hbs')
     console.log('submit.html fue cargada exitosamente.')
 })
 
