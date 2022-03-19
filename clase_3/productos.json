@@ -1,1 +1,23 @@
-[{"title":"pastilla de cloro 1kg","price":500,"thumbnail":"https://www.nantes.com.ar/4810-large_default/pastillas-de-cloro-comunes-1kg-suelto.jpg","id":"$2b$10$MZK9hhdk.ox4uQrmRMkkqu3z9hVijYF38M496.AorQG46wCuPT2vu"},{"title":"clarificador","price":600,"thumbnail":"https://tienda.lujanagricola.com.ar/732-large_default/clarificador-nataclor-x-1-litros.jpg","id":"$2b$10$RJcabcIPuBFL2P4/0PwV3.zbjHUIK53aj/PGYg5Xfcnp4qPhOndCe"},{"title":"flamenco inflable","price":4000,"thumbnail":"https://http2.mlstatic.com/D_NQ_NP_996096-MLA43674000420_102020-O.webp","id":"$2b$10$.Sij/0F.PoQeWA1pEpH94uIHoABiaB1FF6suPL9aVGnxogjhpyhhq"},{"title":"limpiafondos","price":"700","thumbnail":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRY7nrxMxaKGMP9y4CygwzSqMXvrR2zX6jZg&usqp=CAU","id":"$2b$10$WIPkgMO849ChyXo5jJe68eX1fb8hNayfg.Cn8l5a/FK2x1YbVyhAe"},{"title":"test","price":"100","thumbnail":"fgfdghgfhfghfgh","id":"$2b$10$t60JIhi49Eo89YppeACdVOAZSNBM7Fw7Hvuh.5WP1ji8VBUmNt9lu"}]
+[{
+    "totalProductos": 4
+}, {
+    "title": "pastilla de cloro 1kg",
+    "price": 500,
+    "thumbnail": "https://www.nantes.com.ar/4810-large_default/pastillas-de-cloro-comunes-1kg-suelto.jpg",
+    "id": 1
+}, {
+    "title": "clarificador",
+    "price": 600,
+    "thumbnail": "https://tienda.lujanagricola.com.ar/732-large_default/clarificador-nataclor-x-1-litros.jpg",
+    "id": 2
+}, {
+    "title": "flamenco inflable",
+    "price": 4000,
+    "thumbnail": "https://http2.mlstatic.com/D_NQ_NP_996096-MLA43674000420_102020-O.webp",
+    "id": 3
+}, {
+    "title": "limpiafondos",
+    "price": "700",
+    "thumbnail": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTRY7nrxMxaKGMP9y4CygwzSqMXvrR2zX6jZg&usqp=CAU",
+    "id": 4
+}]
